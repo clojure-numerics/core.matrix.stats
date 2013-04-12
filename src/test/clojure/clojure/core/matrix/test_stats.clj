@@ -13,3 +13,10 @@
 
 (deftest test-sum-of-squares
   (is (== 30 (sum-of-squares [1 2 3 4]))))
+
+(deftest test-variance
+  (is (== 0.0 (variance [1 1 1])))
+  (is (== 2.5 (variance [1 2 3 4 5]))))
+
+(deftest test-sd
+  (is (== 0.0 (sd [1 1 1]))))
