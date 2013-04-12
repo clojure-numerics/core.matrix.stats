@@ -6,6 +6,11 @@
   ([values]
     (reduce add values)))
 
+(defn sum-of-squares
+  "Calculates the sum of squares of a collection of values. Values may be scalars, vectors or higher-dimensional matrices."
+  ([values]
+    (reduce add (map #(e* % %) values))))
+
 (defn mean
   "Calculates the mean of a collection of values. Values may be scalars, vectors or higher-dimensional matrices."
   ([values]

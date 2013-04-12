@@ -10,3 +10,6 @@
 (deftest test-sum
   (is (== 6 (sum [1 2 3 ])))
   (is (equals [3 4] (sum [[1 1] [1 1] [1 2]])))) 
+
+(deftest test-sum-of-squares
+  (is (== 30 (sum-of-squares [1 2 3 4]))))
