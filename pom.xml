@@ -1,6 +1,54 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>net.mikera</groupId>
   <artifactId>core.matrix.stats</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  	<parent>
+		<groupId>net.mikera</groupId>
+		<artifactId>clojure-pom</artifactId>
+		<version>0.0.4</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.mikera</groupId>
+			<artifactId>cljunit</artifactId>
+			<version>0.2.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.caliper</groupId>
+			<artifactId>caliper</artifactId>
+			<version>0.5-rc1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>criterium</groupId>
+			<artifactId>criterium</artifactId>
+			<version>0.3.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.clojure</groupId>
+			<artifactId>clojure</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+	</dependencies>
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License (EPL)</name>
+			<url>http://www.eclipse.org/legal/epl-v10.html</url>
+		</license>
+	</licenses>
+
+	<repositories>
+		<repository>
+			<id>clojars.org</id>
+			<name>Clojars repository</name>
+			<url>https://clojars.org/repo</url>
+		</repository>
+	</repositories>
+  
 </project>
