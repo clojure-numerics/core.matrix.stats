@@ -6,8 +6,11 @@ Statistical function library for Clojure using core.matrix
 The purpose of this library is to provide useful statistical function 
 which are not part of core.matrix itself but are generally useful in statistical computing.
 
-All of the functins are implemented on top of the core.matrix API: this means that you 
+All of the functions are implemented on top of the core.matrix API: this means that you 
 can safely use them with any core.matrix implementation.
+
+`core.matrix.stats` is intented to be complementray with Incanter, and adopts the same 
+conventions wherever possible.
 
 ### Examples
 
