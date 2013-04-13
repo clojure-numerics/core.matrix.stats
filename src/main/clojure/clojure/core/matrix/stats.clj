@@ -19,7 +19,7 @@
   ([values]
     (let [n (count values)
           s (sum values)]
-      (mul s (/ 1.0 n)))))
+      (scale s (/ 1.0 n)))))
 
 (defn variance
    "Calculates the unbiased sample variance of a set of values.
