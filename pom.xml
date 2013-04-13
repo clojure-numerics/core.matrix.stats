@@ -56,8 +56,10 @@
 		</repository>
 	</repositories>
   
-
-  <scm>
-    <tag>core.matrix.stats-0.0.1</tag>
-  </scm>
+	<scm>
+		<connection>scm:git:git@github.com:clojure-numerics/${project.artifactId}.git</connection>
+		<url>scm:git:git@github.com:clojure-numerics/${project.artifactId}.git</url>
+		<developerConnection>scm:git:git@github.com:clojure-numerics/${project.artifactId}.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 </project>
