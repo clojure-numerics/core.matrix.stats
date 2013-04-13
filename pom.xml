@@ -56,5 +56,12 @@
 			<url>https://clojars.org/repo</url>
 		</repository>
 	</repositories>
+	
+	<scm>
+		<connection>scm:git:git@github.com:clojure-numerics/${project.artifactId}.git</connection>
+		<url>scm:git:git@github.com:clojure-numerics/${project.artifactId}.git</url>
+		<developerConnection>scm:git:git@github.com:clojure-numerics/${project.artifactId}.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 
 </project>
