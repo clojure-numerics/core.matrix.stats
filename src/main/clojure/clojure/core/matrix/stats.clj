@@ -17,8 +17,13 @@
   "Calculates the sum of squares of a collection of values. 
    Values may be scalars, vectors or higher-dimensional matrices."
   ([values]
-    (let [values (slices values)]
-      (reduce add (map #(e* % %) values)))))
+    (if (== 1 (dimensionality values))
+      (inner-product values values)
+      (let [values (slices values)
+            result (mutable-matrix (first values))]
+        (doseq [v (next values)]
+          (add-product! result v v))
+        result))))
 
 (defn mean
   "Calculates the mean of a collection of values. 
