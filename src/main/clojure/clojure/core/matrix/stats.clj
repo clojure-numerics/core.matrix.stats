@@ -5,19 +5,32 @@
   "Calculates the sum of a collection of values. 
    Values may be scalars, vectors or higher-dimensional matrices."
   ([values]
-    (reduce add values)))
+    (if (== 1 (dimensionality values))
+      (esum values)
+      (let [values (slices values)
+            result (mutable-matrix (first values))]
+        (doseq [v (next values)]
+          (add! result v))
+        result))))
 
 (defn sum-of-squares
   "Calculates the sum of squares of a collection of values. 
    Values may be scalars, vectors or higher-dimensional matrices."
   ([values]
-    (reduce add (map #(e* % %) values))))
+    (if (== 1 (dimensionality values))
+      (inner-product values values)
+      (let [values (slices values)
+            result (mutable-matrix (first values))]
+        (doseq [v (next values)]
+          (add-product! result v v))
+        result))))
 
 (defn mean
   "Calculates the mean of a collection of values. 
    Values may be scalars, vectors or higher-dimensional matrices."
   ([values]
-    (let [n (count values)
+    (let [values (slices values)
+          n (count values)
           s (sum values)]
       (scale s (/ 1.0 n)))))
 
