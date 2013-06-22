@@ -19,14 +19,14 @@
 		<dependency>
 			<groupId>com.google.caliper</groupId>
 			<artifactId>caliper</artifactId>
-			<version>0.5-rc1</version>
+			<version>1.0-beta-1</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>criterium</groupId>
 			<artifactId>criterium</artifactId>
-			<version>0.3.1</version>
+			<version>0.4.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>net.mikera</groupId>
 			<artifactId>core.matrix</artifactId>
-			<version>0.7.0</version>
+			<version>0.7.2</version>
 		</dependency>
 	</dependencies>
 
