@@ -32,7 +32,10 @@
     (let [values (slices values)
           n (count values)
           s (sum values)]
-      (scale s (/ 1.0 n)))))
+      (if (number? s)
+        (/ s n)
+        (scale! s (/ 1.0 n)) ;; abuse the fact that s must be a new mutable matrix....
+        ))))
 
 (defn variance
    "Calculates the unbiased sample variance of a set of values.
@@ -40,8 +43,14 @@
    ([values]
      (let [n (count values)
            u (mean values)
-           ss (sum-of-squares values)]
-       (mul (/ 1.0 (dec n)) (sub ss (mul n (emul u u)))))))
+           ss (sum-of-squares values)
+           nuu (mul n (emul u u))]
+       (if (number? ss)
+         (* (- ss nuu) (/ 1.0 (dec n)))
+         (do ;; must be a new mutable matrix, so we abuse this fact to use it as an accumulator...
+           (sub! ss nuu) 
+           (scale! ss (/ 1.0 (dec n)))
+           ss)))))
 
 (defn sd
   "Calculates the sample standard deviation of a set of values.
