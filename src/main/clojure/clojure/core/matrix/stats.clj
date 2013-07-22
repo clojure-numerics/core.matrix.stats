@@ -32,7 +32,10 @@
     (let [values (slices values)
           n (count values)
           s (sum values)]
-      (scale s (/ 1.0 n)))))
+      (if (number? s)
+        (/ s n)
+        (scale! s (/ 1.0 n)) ;; abuse the fact that s must be a new mutable matrix....
+        ))))
 
 (defn variance
    "Calculates the unbiased sample variance of a set of values.
