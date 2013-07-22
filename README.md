@@ -17,9 +17,19 @@ conventions wherever possible.
 
 [![Build Status](https://travis-ci.org/clojure-numerics/core.matrix.stats.png?branch=master)](https://travis-ci.org/clojure-numerics/core.matrix.stats)
 
+### Usage
+
+`core.matrix.stats` is available from Clojars:
+
+ - https://clojars.org/net.mikera/core.matrix.stats
+
+Ensure you have `core.matrix.stats` added to your project as a dependency, and it will be ready to use.
+
 ### Examples
 
 ```clojure
+(use 'core.matrix.stats)
+
 ;; Calculate the mean of four vectors
 
 (mean [[1 2 3] [4 5 6] [7 8 9] [10 11 12]])
