@@ -22,7 +22,7 @@
       (let [values (slices values)
             result (mutable-matrix (first values))]
         (doseq [v (next values)]
-          (add-product! result v v))
+          (add! result (mul v v))) ;; TODO: convert to add-product! when fixed in core.matrix NDArray
         result))))
 
 (defn mean
