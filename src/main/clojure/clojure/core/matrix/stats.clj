@@ -58,3 +58,13 @@
   ([values]
     (sqrt (variance values))))
 
+(defn normalise-probabilities
+  "Normalises a numerical probability vector, i.e. to a vector where all elements sum to 1.0.
+   Negative values are clamped to 0.0. A zero vector will be set set to [1/n .... 1/n]."
+  ([v]
+    (let [len (double (sum v))]
+      (cond
+        (== len 1.0) v
+        (== len 0.0) (coerce v (let [n (dimension-count v 0)] (repeat n (/ 1.0 n))))
+        :else (scale v (/ 1.0 len))))))
+
