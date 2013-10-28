@@ -1,31 +1,48 @@
 (ns clojure.core.matrix.random
   (:use clojure.core.matrix))
 
-(defn sample-uniform [size]
-  (let [size (if (number? size) [size] size)]
-    (compute-matrix 
-      size
-      (fn [& ixs]
-        (Math/random)))))
+(defn sample-uniform 
+  "Returns an array of random samples from a uniform distribution on [0,1)
 
-(defn sample-normal [size]
-  (let [size (if (number? size) [size] size)
-        r (java.util.Random.)]
-    (compute-matrix 
-      size
-      (fn [& ixs]
-        (.nextGaussian r)))))
+   Size may be either a number of samples or a shape vector."
+  ([size]
+    (let [size (if (number? size) [size] size)]
+      (compute-matrix 
+        size
+        (fn [& ixs]
+          (Math/random))))))
 
-(defn sample-rand-int [size n]
-  (let [size (if (number? size) [size] size)
-        r (java.util.Random.)]
-    (compute-matrix 
-      size
-      (fn [& ixs]
-        (rand-int n)))))
+(defn sample-normal 
+  "Returns an array of random samples from a standard normal distribution.
+
+   Size may be either a number of samples or a shape vector."
+  ([size]
+    (let [size (if (number? size) [size] size)
+          r (java.util.Random.)]
+      (compute-matrix 
+        size
+        (fn [& ixs]
+          (.nextGaussian r))))))
+
+(defn sample-rand-int 
+  "Returns an array of random integers in the range [0..n), equivalent to
+   Clojure's rand-int function.
+
+   Size may be either a number of samples or a shape vector."
+  ([size n]
+    (let [size (if (number? size) [size] size)
+          r (java.util.Random.)]
+      (compute-matrix 
+        size
+        (fn [& ixs]
+          (rand-int n))))))
 
 ;; TODO: should use normal approximation to binomial fdor large n
 (defn sample-binomial 
+  "Returns an array of samples from a binomial distribution with probability p 
+   and n trials for each sample. If n is omitted, a single trial is performed.
+
+   Size may be either a number of samples or a shape vector."
   ([size p]
     (sample-binomial size p 1))
   ([size p n]
