@@ -8,7 +8,7 @@
     (if (== 1 (dimensionality values))
       (esum values)
       (let [values (slices values)
-            result (mutable-matrix (first values))]
+            result (mutable (first values))]
         (doseq [v (next values)]
           (add! result v))
         result))))
@@ -20,7 +20,7 @@
     (if (== 1 (dimensionality values))
       (inner-product values values)
       (let [values (slices values)
-            result (mutable-matrix (first values))]
+            result (mutable (first values))]
         (doseq [v (next values)]
           (add! result (mul v v))) ;; TODO: convert to add-product! when fixed in core.matrix NDArray
         result))))
