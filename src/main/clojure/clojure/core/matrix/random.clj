@@ -37,7 +37,7 @@
         (fn [& ixs]
           (rand-int n))))))
 
-;; TODO: should use normal approximation to binomial fdor large n
+;; TODO: should use normal approximation to binomial for large n
 (defn sample-binomial 
   "Returns an array of samples from a binomial distribution with probability p 
    and n trials for each sample. If n is omitted, a single trial is performed.
