@@ -17,12 +17,14 @@
     (is (mutable? ss)))) 
 
 (deftest test-sum-of-squares
+  (is (== 13 (sum-of-squares [2 3])))
   (is (== 30 (sum-of-squares [1 2 3 4])))
-  (let [ss (sum-of-squares [[0 1] [1 2] [2 3] [3 4]])]
-    (is (equals [14 30] ss))
+  (let [ss (sum-of-squares [[-1 1] [1 2] [2 3] [3 4]])]
+    (is (equals [15 30] ss))
     (is (mutable? ss))))
 
 (deftest test-variance
+  (is (== 0.0 (variance [2 2])))
   (is (== 0.0 (variance [1 1 1])))
   (is (== 2.5 (variance [1 2 3 4 5]))))
 
