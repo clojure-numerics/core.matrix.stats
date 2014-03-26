@@ -20,11 +20,12 @@
     (if (== 1 (dimensionality values))
       (inner-product values values)
       (let [values (slices values)
-            result (mutable (first values))]
+            fv (first values) 
+            result (mutable (mul fv fv))]
         (doseq [v (next values)]
           (add! result (mul v v))
           ;; (add-product! result v v)
-          ) ;; TODO: convert to add-product! when fixed in core.matrix NDArray
+        ) ;; TODO: convert to add-product! when fixed in core.matrix NDArray
         result))))
 
 (defn mean
