@@ -13,7 +13,7 @@
 		<dependency>
 			<groupId>net.mikera</groupId>
 			<artifactId>cljunit</artifactId>
-			<version>0.3.0</version>
+			<version>0.3.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>net.mikera</groupId>
 			<artifactId>core.matrix</artifactId>
-			<version>0.20.0</version>
+			<version>0.30.2</version>
 		</dependency>
 	</dependencies>
 
