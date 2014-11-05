@@ -6,9 +6,7 @@
 (deftest test-sample-uniform
   (is (= [10] (shape (sample-uniform 10))))
   (is (= [10] (shape (sample-uniform [10]))))
-  ;; (is (number? (scalar (sample-uniform [])))) ;; TODO fix with latest core.matrix
-  
-  )
+  (is (number? (scalar (sample-uniform [])))))
 
 (deftest test-randoms
   (let [rs (randoms)]
