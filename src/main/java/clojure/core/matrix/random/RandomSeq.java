@@ -8,45 +8,15 @@ import clojure.lang.IPersistentMap;
 import clojure.lang.ISeq;
 import clojure.lang.Obj;
 
+/**
+ * A Clojure sequence implementation that implements a sequence of random numbers
+ * 
+ * @author Mike
+ *
+ */
 public class RandomSeq extends ASeq {
-	
-	private class Cursor extends ASeq {
-		private int pos;
-		
-		public Cursor(int pos) {
-			this.pos=pos;
-		}
-		
-		@Override
-		public int count() {
-			throw new UnsupportedOperationException("RandomSeq has infinite elements");
-		}
-
-		@Override
-		public IPersistentCollection empty() {
-			return null;
-		}
-
-		@Override
-		public Object first() {
-			return data[pos];
-		}
-
-		@Override
-		public ISeq next() {
-			int npos=pos+1;
-			if (npos<data.length) return new Cursor(npos);
-			return nextChunk();
-		}
-
-		@Override
-		public Obj withMeta(IPersistentMap meta) {
-			throw new UnsupportedOperationException("RandomSeq does not support metadata");
-		}
-
-	}
-
-	private static final int CHUNK_SIZE=16;
+	private static final int INITIAL_CHUNK_SIZE=20;
+	private static final int MAX_CHUNK_SIZE=160;
 	
 	final double[] data;
 	Object rand;
@@ -57,7 +27,7 @@ public class RandomSeq extends ASeq {
 	}
 	
 	public RandomSeq(Random random) {
-		this(produce(random,CHUNK_SIZE),random);
+		this(produce(random,INITIAL_CHUNK_SIZE),random);
 	}
 	
 	public static double[] produce(Random random, int count) {
@@ -88,7 +58,7 @@ public class RandomSeq extends ASeq {
 		
 		Random random=(Random)rand;
 		
-		RandomSeq result= new RandomSeq(produce(random,CHUNK_SIZE),random);
+		RandomSeq result= new RandomSeq(produce(random,Math.min(MAX_CHUNK_SIZE,data.length*2)),random);
 		rand=result;
 		return result;
 	}
@@ -101,6 +71,47 @@ public class RandomSeq extends ASeq {
 	@Override
 	public Obj withMeta(IPersistentMap meta) {
 		throw new UnsupportedOperationException("RandomSeq does not support metadata");
+	}
+	
+	private class Cursor extends ASeq {
+		private final int pos;
+		private final double[] data;
+		
+		private Cursor(double[] data, int pos) {
+			this.pos=pos;
+			this.data=data;
+		}
+		
+		public Cursor(int pos) {
+			this(RandomSeq.this.data,pos);
+		}
+		
+		@Override
+		public int count() {
+			throw new UnsupportedOperationException("RandomSeq has infinite elements");
+		}
+
+		@Override
+		public IPersistentCollection empty() {
+			return null;
+		}
+
+		@Override
+		public Object first() {
+			return data[pos];
+		}
+
+		@Override
+		public ISeq next() {
+			int npos=pos+1;
+			if (npos<data.length) return new Cursor(npos);
+			return nextChunk();
+		}
+
+		@Override
+		public Obj withMeta(IPersistentMap meta) {
+			throw new UnsupportedOperationException("RandomSeq does not support metadata");
+		}
 	}
 
 }
