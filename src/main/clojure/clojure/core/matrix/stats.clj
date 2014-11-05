@@ -33,7 +33,7 @@
    Values may be scalars, vectors or higher-dimensional matrices."
   ([values]
     (let [values (slices values)
-          n (count values)
+          n (dimension-count values 0)
           s (sum values)]
       (if (number? s)
         (/ s n)
@@ -44,7 +44,7 @@
    "Calculates the unbiased sample variance of a set of values.
    Values may be scalars, vectors or higher-dimensional matrices."
    ([values]
-     (let [n (count values)
+     (let [n (dimension-count values 0)
            u (mean values)
            ss (sum-of-squares values)
            nuu (mul n (emul u u))]
