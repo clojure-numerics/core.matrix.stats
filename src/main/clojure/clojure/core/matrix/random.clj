@@ -1,5 +1,22 @@
 (ns clojure.core.matrix.random
-  (:use clojure.core.matrix))
+  (:use clojure.core.matrix)
+  (:use [mikera.cljutils error])
+  (:import [java.util Random])
+  (:import [clojure.core.matrix.random RandomSeq]))
+
+(defn to-random ^Random [seed]
+  (cond 
+    (instance? Random seed) seed
+    (number? seed) (java.util.Random. seed)
+    :else (error "Can't convert to Random instance: " seed)))
+
+(defn randoms 
+  "Returns a lazy sequence of random numbers, given a seed that is either an integer value or a java.util.Random instance"
+  ([]
+    (randoms (System/currentTimeMillis)))
+  ([seed]
+    (let [^Random rnd (to-random seed)]
+      (RandomSeq. rnd))))
 
 (defn sample-uniform 
   "Returns an array of random samples from a uniform distribution on [0,1)
