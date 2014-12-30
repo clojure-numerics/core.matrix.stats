@@ -28,7 +28,7 @@ Ensure you have `core.matrix.stats` added to your project as a dependency, and i
 ### Examples
 
 ```clojure
-(use 'core.matrix.stats)
+(use 'clojure.core.matrix.stats)
 
 ;; Calculate the mean of four vectors
 
