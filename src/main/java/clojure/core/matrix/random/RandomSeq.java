@@ -15,6 +15,7 @@ import clojure.lang.Obj;
  *
  */
 public class RandomSeq extends ASeq {
+	private static final long serialVersionUID = -2985198079440712866L;
 	private static final int INITIAL_CHUNK_SIZE=20;
 	private static final int MAX_CHUNK_SIZE=160;
 	
@@ -74,6 +75,7 @@ public class RandomSeq extends ASeq {
 	}
 	
 	private class Cursor extends ASeq {
+		private static final long serialVersionUID = -4397476315573447323L;
 		private final int pos;
 		private final double[] data;
 		
