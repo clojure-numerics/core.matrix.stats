@@ -32,4 +32,7 @@
   (is (== 0.0 (sd [1 1 1]))))
 
 (deftest test-normalise-probabilities
-  (is (equals [0.5 0.5] (normalise-probabilities [10 10]))))
+  (is (equals [0.5 0.5] (normalise-probabilities [10 10])))
+  (is (equals [1.0] (normalise-probabilities [0])))
+  (is (equals [0.5 0.5] (normalise-probabilities [0 0])))
+  (is (equals [0.25 0.75] (normalise-probabilities [1 3]))))
