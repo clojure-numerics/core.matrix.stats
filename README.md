@@ -15,6 +15,8 @@ conventions wherever possible.
 
 ### Status
 
+[![Clojars Project](http://clojars.org/net.mikera/core.matrix.stats/latest-version.svg)](http://clojars.org/net.mikera/core.matrix.stats)
+
 [![Build Status](https://travis-ci.org/clojure-numerics/core.matrix.stats.png?branch=master)](https://travis-ci.org/clojure-numerics/core.matrix.stats)
 
 ### Usage
