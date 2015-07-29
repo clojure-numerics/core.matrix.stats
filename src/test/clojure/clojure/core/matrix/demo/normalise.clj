@@ -23,7 +23,9 @@
 (def normalising-coder 
   (fn [row] (mapv #(% %2) normalisers (eseq row))))
 
-(pm (map normalising-coder (rows data)))
+(comment 
+  (pm (map normalising-coder (rows data)))
+)
 ;; [[ 0.866  0.000 -0.945]
 ;;  [-0.866 -1.225  0.189]
 ;;  [-0.866  0.000 -0.567]
