@@ -1,6 +1,10 @@
 core.matrix.stats
 =================
 
+This project is now *DEPRECATED*. Equivalent functionality has now been integrated into the main core.matrix project
+
+## Overview
+
 Statistical function library for Clojure using `core.matrix`
 
 The purpose of this library is to provide useful statistical functions 
