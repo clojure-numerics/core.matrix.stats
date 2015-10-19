@@ -1,7 +1,7 @@
 core.matrix.stats
 =================
 
-This project is now *DEPRECATED*. Equivalent functionality has now been integrated into the main core.matrix project
+This project is now *DEPRECATED*. Equivalent functionality has now been integrated into the main [core.matrix](http://github.com/net.mikera/core.matrix) library.
 
 ## Overview
 
